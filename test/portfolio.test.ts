@@ -5,7 +5,7 @@ import { S3DeploymentStack } from "../lib/s3-deployment-stack";
 test("S3Deployment Stack", () => {
   const app = new cdk.App();
   const stack = new S3DeploymentStack(app, "MyTestStack", {
-    folder: "test",
+    folder: "portfolio/website",
     website: "tests",
   });
   expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
