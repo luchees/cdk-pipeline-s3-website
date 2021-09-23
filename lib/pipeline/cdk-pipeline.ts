@@ -1,6 +1,12 @@
 import * as codepipeline from "@aws-cdk/aws-codepipeline";
 import { GitHubSourceAction } from "@aws-cdk/aws-codepipeline-actions";
-import { Construct, SecretValue, Stack, StackProps } from "@aws-cdk/core";
+import {
+  CfnParameter,
+  Construct,
+  SecretValue,
+  Stack,
+  StackProps,
+} from "@aws-cdk/core";
 import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
 import { config } from "../config";
@@ -13,12 +19,17 @@ export class CdkPipelineWebsites extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
 
+    const param = new CfnParameter(this, "parameter", {
+      type: "String",
+      noEcho: true,
+    });
+
     const pipeline = new CdkPipeline(this, `PersonalWebsitesPipeline`, {
       pipelineName: `personal-websites-cdkpipeline`,
       cloudAssemblyArtifact: cloudAssemblyArtifact,
       sourceAction: new GitHubSourceAction({
         actionName: "source-github-action",
-        oauthToken: SecretValue.ssmSecure("/websites/githubtoken", "1"),
+        oauthToken: SecretValue.cfnParameter(param), // Cheap solution
         owner: "luchees",
         repo: "portfolio",
         branch: "main",
