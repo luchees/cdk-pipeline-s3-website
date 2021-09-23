@@ -38,6 +38,14 @@ export class CdkPipelineWebsites extends Stack {
         }),
       }
     );
+    pipeline.addToRolePolicy(
+      new PolicyStatement({
+        actions: ["sts:AssumeRole"],
+        resources: [
+          "arn:aws:iam::365201099929:role/cdk-hnb659fds-deploy-role-365201099929-eu-west-1",
+        ],
+      })
+    );
     const cdkPipeline = new CdkPipeline(this, `PersonalWebsitesCodePipeline`, {
       cloudAssemblyArtifact: cloudAssemblyArtifact,
       codePipeline: pipeline,
