@@ -74,6 +74,6 @@ export class CdkPipelineWebsites extends Stack {
         website: "portfolio-website",
       }
     );
-    pipeline.addApplicationStage(portfolioWebsiteStage);
+    cdkPipeline.addApplicationStage(portfolioWebsiteStage);
   }
 }
