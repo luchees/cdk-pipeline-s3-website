@@ -25,21 +25,21 @@ export class CdkPipelineWebsites extends Stack {
       type: "String",
       noEcho: true,
     });
-    const cdkPipeline = new CdkPipeline(this, `PersonalWebsitesCodePipeline`, {
-      pipelineName: "personal-websites-cdkpipeline",
+    const cdkPipeline = new CdkPipeline(this, `MultiWebsitesCodePipeline`, {
+      pipelineName: "multi-website-cdkpipeline",
       cloudAssemblyArtifact: cloudAssemblyArtifact,
       crossAccountKeys: false,
       sourceAction: new GitHubSourceAction({
         actionName: "source-github-action",
         oauthToken: SecretValue.cfnParameter(param), // Cheap solution
         owner: "luchees",
-        repo: "portfolio",
+        repo: "cdk-pipeline-s3-website",
         branch: "main",
         output: sourceArtifact,
       }),
 
       synthAction: new SimpleSynthAction({
-        projectName: `personal-websites-synth-project`,
+        projectName: `multi-websites-synth-project`,
         sourceArtifact,
         cloudAssemblyArtifact,
         installCommands: ["yarn install"],
@@ -55,14 +55,14 @@ export class CdkPipelineWebsites extends Stack {
       }),
     });
 
-    const portfolioWebsiteStage = new WebsiteStage(
+    const multiSiteWebsiteStage = new WebsiteStage(
       this,
-      `portfolio-website-WebsiteStage`,
+      `portfolio-website-stage`,
       {
         config: config["portfolio-website"],
         website: "portfolio-website",
       }
     );
-    cdkPipeline.addApplicationStage(portfolioWebsiteStage);
+    cdkPipeline.addApplicationStage(multiSiteWebsiteStage);
   }
 }
