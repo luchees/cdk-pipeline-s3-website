@@ -15,7 +15,6 @@ export class S3DeploymentStack extends cdk.Stack {
     const websiteBucket = new s3.Bucket(this, `${props.website}WebsiteBucket`, {
       websiteIndexDocument: "index.html",
       publicReadAccess: true,
-      bucketName: `${props.website}-bucket`,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
