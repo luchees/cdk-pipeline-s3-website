@@ -1,8 +1,8 @@
 {
-  "name": "portfolio",
+  "name": "multi-site",
   "version": "0.1.0",
   "bin": {
-    "portfolio": "bin/portfolio.js"
+    "multiSite": "bin/multi-site.js"
   },
   "scripts": {
     "build": "tsc",
