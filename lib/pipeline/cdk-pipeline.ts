@@ -8,7 +8,7 @@ import {
   Stack,
   StackProps,
 } from "@aws-cdk/core";
-import { PolicyStatement } from "@aws-cdk/aws-iam";
+import { PolicyStatement, Role, ServicePrincipal } from "@aws-cdk/aws-iam";
 import { Bucket } from "@aws-cdk/aws-s3";
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
 import { config } from "../config";
@@ -25,30 +25,10 @@ export class CdkPipelineWebsites extends Stack {
       type: "String",
       noEcho: true,
     });
-    const pipeline = new codepipeline.Pipeline(
-      this,
-      "PersonalWebsitesPipeline",
-      {
-        pipelineName: `personal-websites-cdkpipeline`,
-        crossAccountKeys: false,
-        artifactBucket: new Bucket(this, "websiteArtifactsBucket", {
-          autoDeleteObjects: true,
-          removalPolicy: RemovalPolicy.DESTROY,
-          bucketName: "artifacts-bucket-cdkpipeline",
-        }),
-      }
-    );
-    pipeline.addToRolePolicy(
-      new PolicyStatement({
-        actions: ["sts:AssumeRole"],
-        resources: [
-          "arn:aws:iam::365201099929:role/cdk-hnb659fds-deploy-role-365201099929-eu-west-1",
-        ],
-      })
-    );
     const cdkPipeline = new CdkPipeline(this, `PersonalWebsitesCodePipeline`, {
+      pipelineName: "personal-websites-cdkpipeline",
       cloudAssemblyArtifact: cloudAssemblyArtifact,
-      codePipeline: pipeline,
+      crossAccountKeys: false,
       sourceAction: new GitHubSourceAction({
         actionName: "source-github-action",
         oauthToken: SecretValue.cfnParameter(param), // Cheap solution
@@ -57,6 +37,7 @@ export class CdkPipelineWebsites extends Stack {
         branch: "main",
         output: sourceArtifact,
       }),
+
       synthAction: new SimpleSynthAction({
         projectName: `personal-websites-synth-project`,
         sourceArtifact,

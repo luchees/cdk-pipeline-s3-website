@@ -28,7 +28,6 @@ export class WebsiteStage extends Stage {
         env: props.env,
         folder: props.config.folder,
         website: props.website,
-        synthesizer: new DefaultStackSynthesizer(),
       }
     );
   }
