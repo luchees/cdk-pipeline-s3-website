@@ -329,7 +329,6 @@ Object {
     "testsWebsiteBucket68820863": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "BucketName": "tests-bucket",
         "WebsiteConfiguration": Object {
           "IndexDocument": "index.html",
         },
