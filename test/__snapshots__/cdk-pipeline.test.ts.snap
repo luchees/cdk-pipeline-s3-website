@@ -118,7 +118,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68:585191031104-eu-west-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494:585191031104-eu-west-1\\\\\\"\\"
       ]
     }
   }
@@ -158,7 +158,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"a3058ccb468d757ebb89df5363a1c20f5307c6911136f29d00e1a68c9b2aa7e8:585191031104-eu-west-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68:585191031104-eu-west-1\\\\\\"\\"
       ]
     }
   }
@@ -169,6 +169,46 @@ Object {
       "Type": "AWS::CodeBuild::Project",
     },
     "MultiWebsitesCodePipelineAssetsFileAsset3C3C15A0D": Object {
+      "Properties": Object {
+        "Artifacts": Object {
+          "Type": "CODEPIPELINE",
+        },
+        "EncryptionKey": "alias/aws/s3",
+        "Environment": Object {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:5.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": false,
+          "Type": "LINUX_CONTAINER",
+        },
+        "ServiceRole": Object {
+          "Fn::GetAtt": Array [
+            "MultiWebsitesCodePipelineAssetsFileRole76D939FF",
+            "Arn",
+          ],
+        },
+        "Source": Object {
+          "BuildSpec": "{
+  \\"version\\": \\"0.2\\",
+  \\"phases\\": {
+    \\"install\\": {
+      \\"commands\\": [
+        \\"npm install -g cdk-assets\\"
+      ]
+    },
+    \\"build\\": {
+      \\"commands\\": [
+        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"a3058ccb468d757ebb89df5363a1c20f5307c6911136f29d00e1a68c9b2aa7e8:585191031104-eu-west-1\\\\\\"\\"
+      ]
+    }
+  }
+}",
+          "Type": "CODEPIPELINE",
+        },
+      },
+      "Type": "AWS::CodeBuild::Project",
+    },
+    "MultiWebsitesCodePipelineAssetsFileAsset46DEF4914": Object {
       "Properties": Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
@@ -781,6 +821,32 @@ Object {
                   },
                 ],
                 "Name": "FileAsset3",
+                "RoleArn": Object {
+                  "Fn::GetAtt": Array [
+                    "MultiWebsitesCodePipelineAssetsFileRole76D939FF",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+              Object {
+                "ActionTypeId": Object {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1",
+                },
+                "Configuration": Object {
+                  "ProjectName": Object {
+                    "Ref": "MultiWebsitesCodePipelineAssetsFileAsset46DEF4914",
+                  },
+                },
+                "InputArtifacts": Array [
+                  Object {
+                    "Name": "Artifact_Build_Synth",
+                  },
+                ],
+                "Name": "FileAsset4",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "MultiWebsitesCodePipelineAssetsFileRole76D939FF",

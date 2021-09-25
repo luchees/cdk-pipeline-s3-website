@@ -20,6 +20,7 @@ export class S3DeploymentStack extends cdk.Stack {
       websiteIndexDocument: "index.html",
       publicReadAccess: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     });
 
     const deployment = new s3deploy.BucketDeployment(
@@ -28,7 +29,6 @@ export class S3DeploymentStack extends cdk.Stack {
       {
         sources: [s3deploy.Source.asset(`websites/${folder}`)],
         destinationBucket: websiteBucket,
-        destinationKeyPrefix: "web/static",
       }
     );
     new Route53RecordConstruct(this, `${props.websiteName}Construct`, {
