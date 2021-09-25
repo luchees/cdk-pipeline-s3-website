@@ -4,12 +4,12 @@ import {
   Stage,
   StageProps,
 } from "@aws-cdk/core";
-import { websiteConfig } from "../config";
+import { WebsiteConfig } from "../config";
 import { S3DeploymentStack } from "../s3-deployment-stack";
 
 export interface ExtStageProps extends StageProps {
   website: string;
-  config: websiteConfig;
+  config: WebsiteConfig;
   tags?: { [key: string]: string };
 }
 
@@ -25,7 +25,6 @@ export class WebsiteStage extends Stage {
         description: `s3 deployment bucket for ${props.website}`,
         terminationProtection: true,
         tags: props.tags,
-        env: props.env,
         config: props.config,
         websiteName: props.website,
         synthesizer: new DefaultStackSynthesizer(),

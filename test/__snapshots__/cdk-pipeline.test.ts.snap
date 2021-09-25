@@ -54,15 +54,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":iam::",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":role/cdk-hnb659fds-deploy-role-",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      "-eu-west-1",
+                      ":iam::585191031104:role/cdk-hnb659fds-deploy-role-585191031104-eu-west-1",
                     ],
                   ],
                 },
@@ -126,7 +118,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68:current_account-eu-west-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68:585191031104-eu-west-1\\\\\\"\\"
       ]
     }
   }
@@ -166,7 +158,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"a3058ccb468d757ebb89df5363a1c20f5307c6911136f29d00e1a68c9b2aa7e8:current_account-eu-west-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"a3058ccb468d757ebb89df5363a1c20f5307c6911136f29d00e1a68c9b2aa7e8:585191031104-eu-west-1\\\\\\"\\"
       ]
     }
   }
@@ -206,7 +198,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"7d8b2046844e3098556f7c7f109cae7aa0293b522d526cfd2fa6f8bc03e22635:current_account-eu-west-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.assets.json\\\\\\" --verbose publish \\\\\\"7d8b2046844e3098556f7c7f109cae7aa0293b522d526cfd2fa6f8bc03e22635:585191031104-eu-west-1\\\\\\"\\"
       ]
     }
   }
@@ -232,11 +224,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":iam::",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
+                      ":iam::585191031104:root",
                     ],
                   ],
                 },
@@ -268,11 +256,7 @@ Object {
                     Object {
                       "Ref": "AWS::Partition",
                     },
-                    ":logs:eu-west-1:",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":log-group:/aws/codebuild/*",
+                    ":logs:eu-west-1:585191031104:log-group:/aws/codebuild/*",
                   ],
                 ],
               },
@@ -294,11 +278,7 @@ Object {
                     Object {
                       "Ref": "AWS::Partition",
                     },
-                    ":codebuild:eu-west-1:",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":report-group/*",
+                    ":codebuild:eu-west-1:585191031104:report-group/*",
                   ],
                 ],
               },
@@ -317,7 +297,7 @@ Object {
               "Effect": "Allow",
               "Resource": Array [
                 Object {
-                  "Fn::Sub": "arn:\${AWS::Partition}:iam::\${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-\${AWS::AccountId}-eu-west-1",
+                  "Fn::Sub": "arn:\${AWS::Partition}:iam::585191031104:role/cdk-hnb659fds-file-publishing-role-585191031104-eu-west-1",
                 },
               ],
             },
@@ -447,11 +427,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":logs:eu-west-1:",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":log-group:/aws/codebuild/",
+                      ":logs:eu-west-1:585191031104:log-group:/aws/codebuild/",
                       Object {
                         "Ref": "MultiWebsitesCodePipelineBuildSynthCdkBuildProject1CF53BE0",
                       },
@@ -466,11 +442,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":logs:eu-west-1:",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":log-group:/aws/codebuild/",
+                      ":logs:eu-west-1:585191031104:log-group:/aws/codebuild/",
                       Object {
                         "Ref": "MultiWebsitesCodePipelineBuildSynthCdkBuildProject1CF53BE0",
                       },
@@ -497,11 +469,7 @@ Object {
                     Object {
                       "Ref": "AWS::Partition",
                     },
-                    ":codebuild:eu-west-1:",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":report-group/",
+                    ":codebuild:eu-west-1:585191031104:report-group/",
                     Object {
                       "Ref": "MultiWebsitesCodePipelineBuildSynthCdkBuildProject1CF53BE0",
                     },
@@ -576,11 +544,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":iam::",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
+                      ":iam::585191031104:root",
                     ],
                   ],
                 },
@@ -844,15 +808,7 @@ Object {
                         Object {
                           "Ref": "AWS::Partition",
                         },
-                        ":iam::",
-                        Object {
-                          "Ref": "AWS::AccountId",
-                        },
-                        ":role/cdk-hnb659fds-cfn-exec-role-",
-                        Object {
-                          "Ref": "AWS::AccountId",
-                        },
-                        "-eu-west-1",
+                        ":iam::585191031104:role/cdk-hnb659fds-cfn-exec-role-585191031104-eu-west-1",
                       ],
                     ],
                   },
@@ -873,15 +829,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":iam::",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":role/cdk-hnb659fds-deploy-role-",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      "-eu-west-1",
+                      ":iam::585191031104:role/cdk-hnb659fds-deploy-role-585191031104-eu-west-1",
                     ],
                   ],
                 },
@@ -908,15 +856,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":iam::",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":role/cdk-hnb659fds-deploy-role-",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      "-eu-west-1",
+                      ":iam::585191031104:role/cdk-hnb659fds-deploy-role-585191031104-eu-west-1",
                     ],
                   ],
                 },
@@ -1024,15 +964,7 @@ Object {
                     Object {
                       "Ref": "AWS::Partition",
                     },
-                    ":iam::",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":role/cdk-hnb659fds-deploy-role-",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    "-eu-west-1",
+                    ":iam::585191031104:role/cdk-hnb659fds-deploy-role-585191031104-eu-west-1",
                   ],
                 ],
               },
@@ -1088,11 +1020,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":iam::",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
+                      ":iam::585191031104:root",
                     ],
                   ],
                 },
@@ -1212,11 +1140,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":logs:eu-west-1:",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":log-group:/aws/codebuild/",
+                      ":logs:eu-west-1:585191031104:log-group:/aws/codebuild/",
                       Object {
                         "Ref": "MultiWebsitesCodePipelineUpdatePipelineSelfMutationEAA897A0",
                       },
@@ -1231,11 +1155,7 @@ Object {
                       Object {
                         "Ref": "AWS::Partition",
                       },
-                      ":logs:eu-west-1:",
-                      Object {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":log-group:/aws/codebuild/",
+                      ":logs:eu-west-1:585191031104:log-group:/aws/codebuild/",
                       Object {
                         "Ref": "MultiWebsitesCodePipelineUpdatePipelineSelfMutationEAA897A0",
                       },
@@ -1262,11 +1182,7 @@ Object {
                     Object {
                       "Ref": "AWS::Partition",
                     },
-                    ":codebuild:eu-west-1:",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":report-group/",
+                    ":codebuild:eu-west-1:585191031104:report-group/",
                     Object {
                       "Ref": "MultiWebsitesCodePipelineUpdatePipelineSelfMutationEAA897A0",
                     },
@@ -1287,18 +1203,7 @@ Object {
                 },
               },
               "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:*:iam::",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":role/*",
-                  ],
-                ],
-              },
+              "Resource": "arn:*:iam::585191031104:role/*",
             },
             Object {
               "Action": "cloudformation:DescribeStacks",

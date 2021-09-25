@@ -223,6 +223,19 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
+    "testsArecordF2E1E1F7": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": "s3-website-eu-west-1.amazonaws.com",
+          "HostedZoneId": "Z1BKCTXD74EZPE",
+        },
+        "Comment": "record for tests",
+        "HostedZoneId": "DUMMY",
+        "Name": "test.website.com.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
     "testsBucketA2D052B5": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
@@ -266,30 +279,6 @@ Object {
         },
       },
       "Type": "AWS::S3::BucketPolicy",
-    },
-    "testsConstructtestsArecord109E632A": Object {
-      "Properties": Object {
-        "AliasTarget": Object {
-          "DNSName": "s3-website-eu-west-1.amazonaws.com",
-          "HostedZoneId": "Z1BKCTXD74EZPE",
-        },
-        "Comment": "record for tests",
-        "HostedZoneId": Object {
-          "Ref": "testsConstructtestsWebsiteHostedZone188D3771",
-        },
-        "Name": "website.com.",
-        "Type": "A",
-      },
-      "Type": "AWS::Route53::RecordSet",
-    },
-    "testsConstructtestsWebsiteHostedZone188D3771": Object {
-      "Properties": Object {
-        "HostedZoneConfig": Object {
-          "Comment": "zone for website.com",
-        },
-        "Name": "website.com.",
-      },
-      "Type": "AWS::Route53::HostedZone",
     },
     "testsDeploymentAwsCliLayer19576F7C": Object {
       "Properties": Object {

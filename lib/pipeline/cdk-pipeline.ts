@@ -59,7 +59,7 @@ export class CdkPipelineWebsites extends Stack {
       {
         config: config["portfolio-website"],
         website: "portfolio-website",
-        env: { region: "eu-west-1" },
+        env: props.env,
       }
     );
     cdkPipeline.addApplicationStage(multiSiteWebsiteStage);
