@@ -65,6 +65,6 @@ export class CdkPipelineWebsites extends Stack {
         env: props.env,
       }
     );
-    cdkPipeline.addApplicationStage(multiSiteWebsiteStage, {});
+    cdkPipeline.addApplicationStage(multiSiteWebsiteStage);
   }
 }

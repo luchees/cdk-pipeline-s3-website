@@ -29,10 +29,8 @@ export class S3DeploymentStack extends cdk.Stack {
         sources: [s3deploy.Source.asset(`websites/${folder}`)],
         destinationBucket: websiteBucket,
         destinationKeyPrefix: "web/static",
-        retainOnDelete: false,
       }
     );
-    console.log(this.environment);
     new Route53RecordConstruct(this, `${props.websiteName}Construct`, {
       bucket: websiteBucket,
       config: props.config,

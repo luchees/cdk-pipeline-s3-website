@@ -332,7 +332,6 @@ Object {
           "Ref": "testsBucketA2D052B5",
         },
         "Prune": true,
-        "RetainOnDelete": false,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
