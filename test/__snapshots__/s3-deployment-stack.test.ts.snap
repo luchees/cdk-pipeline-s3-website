@@ -88,7 +88,7 @@ Object {
         "Handler": "index.handler",
         "Layers": Array [
           Object {
-            "Ref": "testsDeployWebsiteAwsCliLayer81D5B95D",
+            "Ref": "testsDeploymentAwsCliLayer19576F7C",
           },
         ],
         "Role": Object {
@@ -191,7 +191,7 @@ Object {
               "Resource": Array [
                 Object {
                   "Fn::GetAtt": Array [
-                    "testsWebsiteBucket68820863",
+                    "testsBucketA2D052B5",
                     "Arn",
                   ],
                 },
@@ -201,7 +201,7 @@ Object {
                     Array [
                       Object {
                         "Fn::GetAtt": Array [
-                          "testsWebsiteBucket68820863",
+                          "testsBucketA2D052B5",
                           "Arn",
                         ],
                       },
@@ -223,7 +223,75 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "testsDeployWebsiteAwsCliLayer81D5B95D": Object {
+    "testsBucketA2D052B5": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "WebsiteConfiguration": Object {
+          "IndexDocument": "index.html",
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "testsBucketPolicyA758FDE1": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "testsBucketA2D052B5",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": "*",
+              },
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    Object {
+                      "Fn::GetAtt": Array [
+                        "testsBucketA2D052B5",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "testsConstructtestsArecord109E632A": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": "s3-website-eu-west-1.amazonaws.com",
+          "HostedZoneId": "Z1BKCTXD74EZPE",
+        },
+        "Comment": "record for tests",
+        "HostedZoneId": Object {
+          "Ref": "testsConstructtestsWebsiteHostedZone188D3771",
+        },
+        "Name": "website.com.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "testsConstructtestsWebsiteHostedZone188D3771": Object {
+      "Properties": Object {
+        "HostedZoneConfig": Object {
+          "Comment": "zone for website.com",
+        },
+        "Name": "website.com.",
+      },
+      "Type": "AWS::Route53::HostedZone",
+    },
+    "testsDeploymentAwsCliLayer19576F7C": Object {
       "Properties": Object {
         "Content": Object {
           "S3Bucket": Object {
@@ -267,12 +335,12 @@ Object {
       },
       "Type": "AWS::Lambda::LayerVersion",
     },
-    "testsDeployWebsiteCustomResource6DCACA57": Object {
+    "testsDeploymentCustomResource6E4CF65A": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "DestinationBucketKeyPrefix": "web/static",
         "DestinationBucketName": Object {
-          "Ref": "testsWebsiteBucket68820863",
+          "Ref": "testsBucketA2D052B5",
         },
         "Prune": true,
         "RetainOnDelete": false,
@@ -325,50 +393,6 @@ Object {
       },
       "Type": "Custom::CDKBucketDeployment",
       "UpdateReplacePolicy": "Delete",
-    },
-    "testsWebsiteBucket68820863": Object {
-      "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "WebsiteConfiguration": Object {
-          "IndexDocument": "index.html",
-        },
-      },
-      "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "testsWebsiteBucketPolicy59DB3B70": Object {
-      "Properties": Object {
-        "Bucket": Object {
-          "Ref": "testsWebsiteBucket68820863",
-        },
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "s3:GetObject",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": "*",
-              },
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    Object {
-                      "Fn::GetAtt": Array [
-                        "testsWebsiteBucket68820863",
-                        "Arn",
-                      ],
-                    },
-                    "/*",
-                  ],
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::S3::BucketPolicy",
     },
   },
 }

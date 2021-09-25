@@ -3,13 +3,11 @@ import { GitHubSourceAction } from "@aws-cdk/aws-codepipeline-actions";
 import {
   CfnParameter,
   Construct,
-  RemovalPolicy,
   SecretValue,
   Stack,
   StackProps,
 } from "@aws-cdk/core";
-import { PolicyStatement, Role, ServicePrincipal } from "@aws-cdk/aws-iam";
-import { Bucket } from "@aws-cdk/aws-s3";
+import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
 import { config } from "../config";
 import { WebsiteStage } from "./cdk-stage";
@@ -61,6 +59,7 @@ export class CdkPipelineWebsites extends Stack {
       {
         config: config["portfolio-website"],
         website: "portfolio-website",
+        env: { region: "eu-west-1" },
       }
     );
     cdkPipeline.addApplicationStage(multiSiteWebsiteStage);

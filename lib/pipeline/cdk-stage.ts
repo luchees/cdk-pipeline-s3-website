@@ -26,8 +26,9 @@ export class WebsiteStage extends Stage {
         terminationProtection: true,
         tags: props.tags,
         env: props.env,
-        folder: props.config.folder,
-        website: props.website,
+        config: props.config,
+        websiteName: props.website,
+        synthesizer: new DefaultStackSynthesizer(),
       }
     );
   }
