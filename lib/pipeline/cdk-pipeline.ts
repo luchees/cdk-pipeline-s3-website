@@ -49,6 +49,10 @@ export class CdkPipelineWebsites extends Stack {
             actions: ["ec2:Describe*"],
             resources: ["*"],
           }),
+          new PolicyStatement({
+            actions: ["route53:ListHostedZonesByName"],
+            resources: ["*"],
+          }),
         ],
       }),
     });

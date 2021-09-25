@@ -484,6 +484,11 @@ Object {
               "Resource": "*",
             },
             Object {
+              "Action": "route53:ListHostedZonesByName",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
               "Action": Array [
                 "s3:GetObject*",
                 "s3:GetBucket*",
