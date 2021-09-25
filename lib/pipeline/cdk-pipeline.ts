@@ -56,7 +56,6 @@ export class CdkPipelineWebsites extends Stack {
         ],
       }),
     });
-
     const multiSiteWebsiteStage = new WebsiteStage(
       this,
       `portfolio-website-stage`,
@@ -66,6 +65,6 @@ export class CdkPipelineWebsites extends Stack {
         env: props.env,
       }
     );
-    cdkPipeline.addApplicationStage(multiSiteWebsiteStage);
+    cdkPipeline.addApplicationStage(multiSiteWebsiteStage, {});
   }
 }
