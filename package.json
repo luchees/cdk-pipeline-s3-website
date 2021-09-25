@@ -12,23 +12,36 @@
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.124.0",
-    "@aws-cdk/aws-s3": "1.124.0",
-    "@aws-cdk/aws-s3-deployment": "1.124.0",
-    "@aws-cdk/aws-route53": "1.124.0",
     "@aws-cdk/aws-codepipeline": "1.124.0",
     "@aws-cdk/aws-codepipeline-actions": "1.124.0",
+    "@aws-cdk/aws-route53": "1.124.0",
     "@aws-cdk/aws-route53-targets": "1.124.0",
+    "@aws-cdk/aws-s3": "1.124.0",
+    "@aws-cdk/aws-s3-deployment": "1.124.0",
     "@aws-cdk/pipelines": "1.124.0",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
+    "aws-cdk": "1.124.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.2",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
-    "aws-cdk": "1.124.0",
     "ts-node": "^9.0.0",
     "typescript": "~3.9.7"
   },
   "dependencies": {
     "@aws-cdk/core": "1.124.0",
     "source-map-support": "^0.5.16"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   }
 }
