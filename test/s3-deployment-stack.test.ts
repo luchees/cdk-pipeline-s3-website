@@ -7,7 +7,7 @@ test("S3Deployment Stack", () => {
   const stack = new S3DeploymentStack(app, "MyTestStack", {
     config: {
       url: "test.website.com",
-      folder: "website",
+      folder: "portfolio",
       domainName: "website.com",
     },
     websiteName: "tests",

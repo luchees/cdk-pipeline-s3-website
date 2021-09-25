@@ -8,7 +8,7 @@ export type WebsiteConfig = {
 };
 export const config: configType = {
   "portfolio-website": {
-    folder: "website",
+    folder: "portfolio",
     url: "lvda.link",
     domainName: "lvda.link",
   },

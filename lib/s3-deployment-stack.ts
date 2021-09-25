@@ -26,7 +26,7 @@ export class S3DeploymentStack extends cdk.Stack {
       this,
       `${props.websiteName}Deployment`,
       {
-        sources: [s3deploy.Source.asset(`${folder}`)],
+        sources: [s3deploy.Source.asset(`websites/${folder}`)],
         destinationBucket: websiteBucket,
         destinationKeyPrefix: "web/static",
         retainOnDelete: false,

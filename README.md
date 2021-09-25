@@ -2,6 +2,8 @@
 
 # Setup locally
 
-yarn add -g commitizen
+`yarn`
+`yarn add -g commitizen`
+`yarn husky install`
 
 # Add website
