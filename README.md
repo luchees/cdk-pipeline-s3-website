@@ -8,7 +8,7 @@ Cost is around 1 euro per month and 5 euro per year for a domain ( minus tax )
 ## Prerequisites
 
 - AWS account and CLI credentials https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
-- npm and nodejs https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+- npm v7 and nodejs v14 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 ## Setup
 

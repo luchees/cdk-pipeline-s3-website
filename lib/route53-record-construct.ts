@@ -1,9 +1,9 @@
-import * as cdk from "@aws-cdk/core";
-import * as route53 from "@aws-cdk/aws-route53";
-import * as targets from "@aws-cdk/aws-route53-targets";
-import * as cloudfront from "@aws-cdk/aws-cloudfront";
-import { IBucket } from "@aws-cdk/aws-s3";
-import { WebsiteConfig } from "./config";
+import * as cdk from '@aws-cdk/core';
+import * as route53 from '@aws-cdk/aws-route53';
+import * as targets from '@aws-cdk/aws-route53-targets';
+import * as cloudfront from '@aws-cdk/aws-cloudfront';
+import { IBucket } from '@aws-cdk/aws-s3';
+import { WebsiteConfig } from './config';
 
 export interface ConstructProps {
   websiteName: string;
@@ -30,11 +30,11 @@ export class Route53RecordConstruct extends cdk.Construct {
         originConfigs: [
           {
             s3OriginSource: {
-              s3BucketSource: props.bucket,
+              s3BucketSource: props.bucket
             },
-            behaviors: [{ isDefaultBehavior: true }],
-          },
-        ],
+            behaviors: [{ isDefaultBehavior: true }]
+          }
+        ]
       }
     );
 
@@ -50,7 +50,7 @@ export class Route53RecordConstruct extends cdk.Construct {
       ),
       zone: zone,
       recordName: url,
-      comment: `record for ${props.websiteName}`,
+      comment: `record for ${props.websiteName}`
     });
   }
 }

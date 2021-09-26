@@ -1,0 +1,7 @@
+# Ignore artifacts:
+cdk.out
+lib/**.js
+lib/**.d.ts
+*.html
+README
+package-lock.json

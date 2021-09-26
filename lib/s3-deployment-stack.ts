@@ -1,9 +1,9 @@
-import * as cdk from "@aws-cdk/core";
-import * as s3deploy from "@aws-cdk/aws-s3-deployment";
-import * as s3 from "@aws-cdk/aws-s3";
-import { StackProps, Tag, Tags } from "@aws-cdk/core";
-import { Route53RecordConstruct } from "./route53-record-construct";
-import { WebsiteConfig } from "./config";
+import * as cdk from '@aws-cdk/core';
+import * as s3deploy from '@aws-cdk/aws-s3-deployment';
+import * as s3 from '@aws-cdk/aws-s3';
+import { StackProps, Tag, Tags } from '@aws-cdk/core';
+import { Route53RecordConstruct } from './route53-record-construct';
+import { WebsiteConfig } from './config';
 
 export interface ExtStackProps extends StackProps {
   websiteName: string;
@@ -16,10 +16,10 @@ export class S3DeploymentStack extends cdk.Stack {
     const { folder } = props.config;
 
     const websiteBucket = new s3.Bucket(this, `${props.websiteName}Bucket`, {
-      websiteIndexDocument: "index.html",
+      websiteIndexDocument: 'index.html',
       publicReadAccess: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      autoDeleteObjects: true,
+      autoDeleteObjects: true
     });
 
     const deployment = new s3deploy.BucketDeployment(
@@ -27,7 +27,7 @@ export class S3DeploymentStack extends cdk.Stack {
       `${props.websiteName}Deployment`,
       {
         sources: [s3deploy.Source.asset(`websites/${folder}`)],
-        destinationBucket: websiteBucket,
+        destinationBucket: websiteBucket
       }
     );
     const route53Record = new Route53RecordConstruct(
@@ -36,7 +36,7 @@ export class S3DeploymentStack extends cdk.Stack {
       {
         bucket: websiteBucket,
         config: props.config,
-        websiteName: props.websiteName,
+        websiteName: props.websiteName
       }
     );
   }

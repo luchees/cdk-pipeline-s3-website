@@ -2,15 +2,15 @@ import {
   Construct,
   DefaultStackSynthesizer,
   Stage,
-  StageProps,
-} from "@aws-cdk/core";
-import { WebsiteConfig } from "../config";
-import { S3DeploymentStack } from "../s3-deployment-stack";
+  StageProps
+} from '@aws-cdk/core';
+import { WebsiteConfig } from '../config';
+import { S3DeploymentStack } from '../s3-deployment-stack';
 
 export interface ExtStageProps extends StageProps {
   website: string;
   config: WebsiteConfig;
-  tags?: { "s3-website": string };
+  tags?: { 's3-website': string };
 }
 
 export class WebsiteStage extends Stage {
@@ -27,7 +27,7 @@ export class WebsiteStage extends Stage {
         tags: props.tags,
         config: props.config,
         websiteName: props.website,
-        synthesizer: new DefaultStackSynthesizer(),
+        synthesizer: new DefaultStackSynthesizer()
       }
     );
   }

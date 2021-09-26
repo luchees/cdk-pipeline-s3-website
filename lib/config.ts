@@ -7,20 +7,20 @@ export type WebsiteConfig = {
   domainName: string;
 };
 export const config: configType = {
-  "portfolio-website": {
-    folder: "portfolio",
-    url: "lvda.link",
-    domainName: "lvda.link",
-  },
+  'portfolio-website': {
+    folder: 'portfolio',
+    url: 'lvda.link',
+    domainName: 'lvda.link'
+  }
 };
 
 export const githubConfig = {
-  owner: "luchees",
-  repo: "cdk-pipeline-s3-website",
-  branch: "main",
+  owner: 'luchees',
+  repo: 'cdk-pipeline-s3-website',
+  branch: 'main'
 };
 
 export const awsEnv = {
-  accoung: "365201099929",
-  region: "eu-west-1",
+  accoung: '365201099929',
+  region: 'eu-west-1'
 };
