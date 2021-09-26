@@ -1,14 +1,13 @@
 import * as cdk from "@aws-cdk/core";
 import * as s3deploy from "@aws-cdk/aws-s3-deployment";
 import * as s3 from "@aws-cdk/aws-s3";
-import { StackProps } from "@aws-cdk/core";
+import { StackProps, Tag, Tags } from "@aws-cdk/core";
 import { Route53RecordConstruct } from "./route53-record-construct";
 import { WebsiteConfig } from "./config";
 
 export interface ExtStackProps extends StackProps {
   websiteName: string;
   config: WebsiteConfig;
-  tags?: { [key: string]: string };
 }
 export class S3DeploymentStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props: ExtStackProps) {
@@ -31,10 +30,14 @@ export class S3DeploymentStack extends cdk.Stack {
         destinationBucket: websiteBucket,
       }
     );
-    new Route53RecordConstruct(this, `${props.websiteName}Construct`, {
-      bucket: websiteBucket,
-      config: props.config,
-      websiteName: props.websiteName,
-    });
+    const route53Record = new Route53RecordConstruct(
+      this,
+      `${props.websiteName}Construct`,
+      {
+        bucket: websiteBucket,
+        config: props.config,
+        websiteName: props.websiteName,
+      }
+    );
   }
 }

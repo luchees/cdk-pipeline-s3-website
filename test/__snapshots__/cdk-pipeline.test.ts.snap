@@ -884,6 +884,7 @@ Object {
                     ],
                   },
                   "StackName": "portfolio-website-deployment-stack",
+                  "TemplateConfiguration": "Artifact_Build_Synth::assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.template.json.config.json",
                   "TemplatePath": "Artifact_Build_Synth::assembly-MyTestStack-portfolio-website-stage/portfolio-website-deployment-stack.template.json",
                 },
                 "InputArtifacts": Array [

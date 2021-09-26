@@ -9,7 +9,7 @@ import {
 } from "@aws-cdk/core";
 import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
-import { config } from "../config";
+import { config, githubConfig } from "../config";
 import { WebsiteStage } from "./cdk-stage";
 
 export class CdkPipelineWebsites extends Stack {
@@ -30,9 +30,7 @@ export class CdkPipelineWebsites extends Stack {
       sourceAction: new GitHubSourceAction({
         actionName: "source-github-action",
         oauthToken: SecretValue.cfnParameter(param), // Cheap solution
-        owner: "luchees",
-        repo: "cdk-pipeline-s3-website",
-        branch: "main",
+        ...githubConfig,
         output: sourceArtifact,
       }),
 
@@ -56,15 +54,15 @@ export class CdkPipelineWebsites extends Stack {
         ],
       }),
     });
-    const multiSiteWebsiteStage = new WebsiteStage(
-      this,
-      `portfolio-website-stage`,
-      {
-        config: config["portfolio-website"],
-        website: "portfolio-website",
-        env: props.env,
-      }
+    Object.keys(config).forEach((key) =>
+      cdkPipeline.addApplicationStage(
+        new WebsiteStage(this, `${key}-stage`, {
+          config: config[key],
+          website: key,
+          env: props.env,
+          tags: { "s3-website": key },
+        })
+      )
     );
-    cdkPipeline.addApplicationStage(multiSiteWebsiteStage);
   }
 }

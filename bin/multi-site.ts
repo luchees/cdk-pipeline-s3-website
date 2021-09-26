@@ -2,6 +2,7 @@
 import "source-map-support/register";
 import * as cdk from "@aws-cdk/core";
 import { CdkPipelineWebsites } from "../lib/pipeline/cdk-pipeline";
+import { awsEnv } from "../lib/config";
 
 const app = new cdk.App();
 new CdkPipelineWebsites(app, "CdkPipelineWebsites", {
@@ -13,5 +14,5 @@ new CdkPipelineWebsites(app, "CdkPipelineWebsites", {
   // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  env: { account: "365201099929", region: "eu-west-1" },
+  env: { ...awsEnv },
 });

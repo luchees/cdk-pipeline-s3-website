@@ -13,3 +13,14 @@ export const config: configType = {
     domainName: "lvda.link",
   },
 };
+
+export const githubConfig = {
+  owner: "luchees",
+  repo: "cdk-pipeline-s3-website",
+  branch: "main",
+};
+
+export const awsEnv = {
+  accoung: "365201099929",
+  region: "eu-west-1",
+};

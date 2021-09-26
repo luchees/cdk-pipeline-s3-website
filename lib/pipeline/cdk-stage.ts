@@ -10,7 +10,7 @@ import { S3DeploymentStack } from "../s3-deployment-stack";
 export interface ExtStageProps extends StageProps {
   website: string;
   config: WebsiteConfig;
-  tags?: { [key: string]: string };
+  tags?: { "s3-website": string };
 }
 
 export class WebsiteStage extends Stage {
