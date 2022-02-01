@@ -24,7 +24,7 @@
     "@aws-cdk/pipelines": "1.124.0",
     "@types/jest": "^26.0.10",
     "@types/node": "16.10.1",
-    "aws-cdk": "1.124.0",
+    "aws-cdk": "2.10.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.2",
